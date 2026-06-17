@@ -1,2 +1,19 @@
-# Workshop-Wonders-2026
+## Workshop-Wonders-2026
+
+Just a glimpse inside my workshop to see some of what I like to tinker on and see how things work from the inside. I tear things apart, test their limits, see what I can configure or put together, and just have a little fun because curiosity is just my nature.
+
+## 🧰 What’s in the Workshop
+
+- **bench-notes/** — Daily thoughts, tests, and observations.
+- **build-logs/** — Logs from compiling and building software (oneCCL, DPDK, kernels, etc.).
+- **experiments/** — Anything I try just to see what happens.
+- **system-rebuilds/** — Notes from rebuilding and tuning my Linux systems.
+- **network-tuning/** — Fiber, Wi-Fi, multicast, firewall, and network experiments.
+- **oneapi-ccl/** — oneAPI and oneCCL builds, flags, and communication tests.
+- **tools-and-flags/** — Compiler flags, sysctl tweaks, and other knobs I like to turn.
+
+## 🔧 About This Repo
+
+This is my digital workbench. Nothing fancy, nothing polished — just the raw notes, builds, and experiments from a curious mind who likes to see how things work under the hood.
+ Workshop-Wonders-2026
 Just a glimpse inside my workshop to see some of what I like to tinker on and see how things work from the inside. I tear things apart, test their limits, see what I can configure or put together, and just have a little fun because curiosity is my just my nature.
