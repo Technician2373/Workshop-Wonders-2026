@@ -1,0 +1,6 @@
+This was my attempt to build a compiler i had read about that will give around a 15% boost to your projects and tunes things up to your set-up.
+I started out with the basic building blocks of oneAPI, oneTBB and oneDNN, they are I have found the building blocks of anything you want to do.
+oneTBB is your schedule of how tasks and data are handled and its job is to just make those loads balance out just like you would do in a lot of different situations.
+oneDNN is basically doing the brain work of optimizing the tasks and learning as it goes to make everything run faster and smoother like tuning a engine.
+LLVM the compiler for oneAPI can be used to compile both oneTBB and oneDNN to better tune them to your setup.
+Then after they are tuned it can be optimized by taking what you have done and rerunning the process with the tuned oneTBB and oneDNN over again.
