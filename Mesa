@@ -1,0 +1,28 @@
+# Mesa Notes
+
+## What I was trying to do
+Understand how Mesa implements OpenGL, Vulkan, and drivers.
+
+## What I started with
+- Mesa GitHub repo
+- driver folders (iris, radeonsi, etc.)
+
+## What each part does
+- Gallium: driver framework
+- Vulkan drivers: per-GPU implementations
+- GL drivers: classic or Gallium-based
+
+## What happened
+- Mesa is huge.
+- Drivers vary a lot in complexity.
+
+## What confused me
+- Gallium pipeline stages.
+- How Vulkan drivers integrate.
+
+## What I want to try next
+- Explore iris (Intel) driver.
+- Compare Gallium vs classic GL.
+
+## Random thoughts
+Mesa is the “engine room” of Linux graphics.
