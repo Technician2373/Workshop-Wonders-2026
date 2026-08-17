@@ -1,0 +1,37 @@
+# Kernel Build Process Notes
+
+## What I was trying to do
+Understand how to build a kernel more than once: starting from the original stable kernel, then building the next stable version, and finally building the next release candidate (RC). I wanted to see how each build relates to the last and how the tuning carries forward.
+
+## What I started with
+- My original distro kernel (the known-good baseline)
+- The next stable kernel release
+- The next RC kernel release
+- My own .config file carried forward between builds
+
+## What each part does
+- **Original kernel** — This is the baseline. It always boots, always works, and gives you a safe fallback.
+- **Next stable kernel** — This is the “clean upgrade.” It has fixes, improvements, and stable patches. Good for long-term use.
+- **Next RC kernel** — This is the experimental one. It has new features, new drivers, and new scheduler updates. Good for testing and tuning.
+
+## What happened
+- I built the original kernel using my first .config.
+- I copied that .config forward and used it to build the next stable kernel.
+- I then used the tuned stable .config to build the RC kernel.
+- Each build got cleaner and more tuned because the config carried forward.
+- The RC kernel booted and ran well once the initrd and signing were done correctly.
+
+## What confused me
+- How much of the .config should be reused.
+- Why some modules disappear between versions.
+- Why CPU0 gets hammered during boot and snapshots.
+- How the scheduler changes between stable and RC builds.
+
+## What I want to try next
+- Build the next RC after this one.
+- Compare performance between stable and RC.
+- Trim subsystems one at a time.
+- Create a “kernel family” inside my repo with configs for each version.
+
+## Random thoughts
+Building a kernel twice (or three times) isn’t just upgrading — it’s creating a lineage. Each build teaches you something, each config gets cleaner, and each version becomes more tuned to your system. This is how you take control of your machine instead of letting the distro decide everything.
