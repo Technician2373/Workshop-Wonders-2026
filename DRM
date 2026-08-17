@@ -1,0 +1,28 @@
+# DRM Notes
+
+## What I was trying to do
+Understand how Linux handles displays, modesetting, and GPU access.
+
+## What I started with
+- drm-kms docs
+- Intel DRM search results
+
+## What each part does
+- KMS: sets display modes
+- GEM/TTM: memory management
+- IOCTLs: communication with the kernel
+
+## What happened
+- DRM is low-level but powerful.
+- KMS makes sense once you see the flow.
+
+## What confused me
+- Plane/CRTC/encoder relationships.
+- Buffer lifetime rules.
+
+## What I want to try next
+- Write a tiny KMS program.
+- Explore Intel’s DRM driver.
+
+## Random thoughts
+DRM is the “bare metal” of Linux graphics.
