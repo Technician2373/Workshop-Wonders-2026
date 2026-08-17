@@ -1,0 +1,27 @@
+# SPIRV-Cross Notes
+
+## What I was trying to do
+Convert SPIR-V into GLSL, MSL, HLSL, and other shading languages.
+
+## What I started with
+- spirv-cross GitHub repo
+- sample shaders
+
+## What each part does
+- Compiler: converts SPIR-V to target language
+- Reflection: tells you what resources exist
+
+## What happened
+- Cross-compiling works well.
+- Reflection is super useful for engine code.
+
+## What confused me
+- Some languages need special options.
+- Resource binding rules differ per backend.
+
+## What I want to try next
+- Convert Vulkan shaders to GLSL and HLSL.
+- Test reflection with my own shaders.
+
+## Random thoughts
+SPIRV-Cross is basically the “translator” of the GPU world.
