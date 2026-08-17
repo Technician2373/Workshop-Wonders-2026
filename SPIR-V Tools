@@ -1,0 +1,29 @@
+# SPIR-V Tools Notes
+
+## What I was trying to do
+Understand how SPIR-V gets validated, optimized, and disassembled.
+
+## What I started with
+- spirv-tools GitHub repo
+- validator, optimizer, disassembler
+
+## What each part does
+- Validator: checks correctness
+- Optimizer: rewrites instructions
+- Disassembler: turns binary into readable text
+
+## What happened
+- The tools are modular and easy to use.
+- Optimizer passes are powerful but confusing at first.
+
+## What confused me
+- SPIR-V is very strict.
+- Some passes require specific capabilities.
+
+## What I want to try next
+- Run validator on my own shaders.
+- Try optimization passes.
+- Compare output with glslang.
+
+## Random thoughts
+SPIR-V Tools feel like the “lint + tuning” stage of GPU code.
