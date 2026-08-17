@@ -1,0 +1,27 @@
+# glslang Notes
+
+## What I was trying to do
+Compile GLSL into SPIR-V.
+
+## What I started with
+- glslangValidator
+- Khronos glslang repo
+
+## What each part does
+- Frontend: parses GLSL
+- Backend: emits SPIR-V
+
+## What happened
+- Compilation is straightforward.
+- Errors are clear and easy to fix.
+
+## What confused me
+- Version and profile rules.
+- Some extensions require flags.
+
+## What I want to try next
+- Compile my own shaders.
+- Compare output with SPIR-V Tools.
+
+## Random thoughts
+glslang is the “front door” to SPIR-V.
