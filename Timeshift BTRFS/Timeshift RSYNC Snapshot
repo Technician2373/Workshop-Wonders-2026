@@ -1,0 +1,44 @@
+# Snapshot From Hell Notes
+
+## What I was trying to do
+Figure out why Timeshift and Btrfs were acting strange and why the system kept freezing, stalling, or throwing “??? remaining” during snapshot operations. I wanted to understand what was actually happening under the hood.
+
+## What I started with
+- A Timeshift snapshot containing 1,428,586 files
+- Btrfs subvolumes and metadata trees
+- CPU0 spikes during snapshot commits
+- GPU resets and compositor freezes
+- Kernel logs showing stalls and reclaim events
+
+## What each part does
+- **Timeshift** — Walks the entire filesystem and creates snapshots. It doesn’t care how big the tree is.
+- **Btrfs** — Stores everything as metadata blocks. More files = more metadata = more pain.
+- **CPU0** — Handles most of the filesystem and workqueue scheduling. When metadata storms hit, CPU0 gets pinned.
+- **GPU layer (i915/xe)** — Needs stable timing. When CPU0 is overloaded, the GPU starves and resets.
+- **Wayland compositor** — Freezes when GPU timing collapses.
+
+## What happened
+- The snapshot had over 1.4 million files.
+- Timeshift couldn’t even estimate how many were left, so it showed “??? remaining.”
+- Btrfs metadata exploded and caused massive stalls.
+- CPU0 hit 100% repeatedly during snapshot commits.
+- The GPU layer became unstable and triggered resets.
+- The compositor froze, stuttered, or crashed.
+- This forced me to dig into the kernel, the GPU stack, and the filesystem to understand the chain reaction.
+
+## What confused me
+- Why the GPU would crash during a filesystem operation.
+- Why CPU0 handled almost all the load.
+- Why Timeshift couldn’t show progress.
+- How metadata storms affect the scheduler.
+- Why the RC kernel behaved differently from stable.
+
+## What I want to try next
+- Reduce snapshot size by trimming caches and logs.
+- Test snapshots on a tuned kernel.
+- Compare behavior between stable and RC kernels.
+- Monitor workqueue stalls during snapshot commits.
+- Document GPU resets triggered by filesystem pressure.
+
+## Random thoughts
+A snapshot with 1.4 million files isn’t a backup — it’s a natural disaster. But digging through the kernel, GPU stack, and Btrfs behavior taught me more about how the system works than any manual ever could.
