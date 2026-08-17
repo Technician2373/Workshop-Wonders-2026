@@ -1,0 +1,35 @@
+# Wayland Notes
+
+## What I understand so far
+- Wayland is the protocol that replaces X11.
+- It’s basically the rules for how clients talk to the compositor.
+- The compositor is the boss; clients don’t draw directly anymore.
+- Everything goes through shared memory buffers or GPU buffers.
+
+## What I tried
+- Looked at wayland-client examples on GitHub.
+- Checked out the wayland-mirror repo.
+- Tried to understand how wl_display, wl_registry, and wl_surface fit together.
+- Looked at how clients create buffers and hand them off to the compositor.
+
+## What happened
+- The API feels low-level but clean.
+- Hard to follow at first because everything is callbacks and globals.
+- Realized you need to bind interfaces from the registry before doing anything.
+- Saw how surfaces get committed and the compositor decides when to show them.
+
+## What I think caused confusion
+- Wayland doesn’t do drawing — the client does.
+- The compositor controls everything: timing, placement, visibility.
+- You have to understand the protocol objects before the code makes sense.
+
+## What to try next
+- Build a tiny client that opens a window.
+- Try creating a wl_surface and attaching a buffer.
+- Experiment with wl_shm and GPU buffers.
+- Look at how toolkits (GTK, Qt) wrap Wayland so I can compare.
+
+## Random thoughts
+- Wayland feels like a clean break from X11.
+- It’s simple once you see the pattern: registry → globals → surfaces → buffers.
+- I want to understand how compositors like Mutter and KWin implement it.
