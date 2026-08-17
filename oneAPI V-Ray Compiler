@@ -1,6 +1,34 @@
-This was my attempt to build a compiler i had read about that will give around a 15% boost to your projects and tunes things up to your set-up.
-I started out with the basic building blocks of oneAPI, oneTBB and oneDNN, they are I have found the building blocks of anything you want to do.
-oneTBB is your schedule of how tasks and data are handled and its job is to just make those loads balance out just like you would do in a lot of different situations.
-oneDNN is basically doing the brain work of optimizing the tasks and learning as it goes to make everything run faster and smoother like tuning a engine.
-LLVM the compiler for oneAPI can be used to compile both oneTBB and oneDNN to better tune them to your setup.
-Then after they are tuned it can be optimized by taking what you have done and rerunning the process with the tuned oneTBB and oneDNN over again.
+# oneAPI V‑Ray Compiler Notes
+
+## What I was trying to do
+Build a compiler I read about that can give around a 15% boost to projects by tuning everything to my setup. I wanted to understand how oneAPI, oneTBB, oneDNN, and LLVM fit together to make that happen.
+
+## What I started with
+- oneAPI base components
+- oneTBB (task scheduling)
+- oneDNN (optimization + learning)
+- LLVM (compiler backend for tuning)
+
+## What each part does
+- **oneTBB** — Handles how tasks and data move around. Its job is to balance loads, just like you would do in any real‑world situation.
+- **oneDNN** — Does the “brain work.” It optimizes tasks and learns as it goes, making everything run smoother — like tuning an engine.
+- **LLVM** — Compiles oneTBB and oneDNN so they’re tuned to your specific hardware and setup.
+
+## What happened
+- I built the basic components.
+- I saw how oneTBB and oneDNN act as the foundation for almost anything in the Intel compute stack.
+- LLVM can recompile them so they match your system better.
+- After tuning, you can rerun the process to optimize again using the tuned versions.
+
+## What confused me
+- The relationship between oneAPI, oneTBB, oneDNN, and LLVM isn’t obvious at first.
+- The tuning loop makes sense once you see it: build → tune → rebuild → optimize.
+
+## What I want to try next
+- Build a full pipeline using the tuned versions.
+- Test performance differences before and after tuning.
+- See how this fits into bigger projects like V‑Ray or compute workloads.
+
+## Random thoughts
+This took me about 15 minutes. I never liked grammar or language class, but this is how my mind works — simple, mechanical, and straight to the point. This is my workshop, and I’m putting my thoughts here.
+
