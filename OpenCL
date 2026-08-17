@@ -1,0 +1,29 @@
+# OpenCL Notes
+
+## What I was trying to do
+Understand how OpenCL kernels run on GPUs and CPUs.
+
+## What I started with
+- OpenCL 5.0 search results
+- Intel OpenCL repos
+
+## What each part does
+- Platform: vendor backend
+- Device: CPU/GPU/NPU
+- Queue: where kernels run
+- Buffers: memory objects
+
+## What happened
+- Kernel compilation is straightforward.
+- Memory rules are strict.
+
+## What confused me
+- Different vendors behave differently.
+- Extensions vary a lot.
+
+## What I want to try next
+- Write a simple kernel.
+- Compare OpenCL vs oneAPI.
+
+## Random thoughts
+OpenCL feels like the “old but reliable” compute API.
