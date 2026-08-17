@@ -1,0 +1,42 @@
+# Arrow Lake GPU Stack Notes
+
+## What I was trying to do
+Figure out how touchy the GPU layer is on Arrow Lake and why it crashes so easily. I wanted to understand how those crashes pushed me into rebuilding the kernel and going through the entire GPU stack piece by piece.
+
+## What I started with
+- Arrow Lake laptop with hybrid Intel GPU setup
+- i915, xe, and xe2 driver behavior
+- Workqueue stalls and CPU0 spikes
+- dmesg logs showing GPU resets and probe failures
+- Kernel builds from stable → next stable → RC
+
+## What each part does
+- **i915** — The older Intel graphics driver. Still handles a lot of display and legacy paths.
+- **xe / xe2** — The newer Intel GPU driver stack meant for modern architectures. Handles compute, newer firmware, and updated scheduling.
+- **Workqueues** — Where GPU tasks get scheduled. When they stall, CPU0 gets hammered.
+- **Kernel GPU stack** — DRM, KMS, memory management, firmware loading, and driver probing.
+
+## What happened
+- The GPU layer on Arrow Lake turned out to be extremely touchy.
+- Small timing issues caused crashes, freezes, and GPU resets.
+- i915 and xe sometimes fought over who should bind first.
+- Workqueues stalled and locked CPU0 at 100% during boot or snapshots.
+- The system would freeze, drop frames, or hard crash under load.
+- This forced me to rebuild the kernel multiple times and walk through the entire GPU stack to see what was going wrong.
+
+## What confused me
+- Why the GPU would crash even under light load.
+- Why CPU0 took the brunt of every GPU stall.
+- Why i915 and xe overlap so much on Arrow Lake.
+- How firmware loading order affects stability.
+- Why the RC kernel behaved differently from stable.
+
+## What I want to try next
+- Build the next RC kernel and compare GPU behavior.
+- Test xe-only builds vs mixed i915/xe builds.
+- Look deeper into workqueue scheduling.
+- Try different firmware versions for GuC/HuC.
+- Document GPU resets and probe failures in detail.
+
+## Random thoughts
+Arrow Lake’s GPU stack feels like it’s held together by timing and luck. One small slip and the whole thing crashes. But digging through the kernel and rebuilding versions taught me more about the GPU stack than any documentation ever could.
