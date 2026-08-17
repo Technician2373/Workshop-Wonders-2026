@@ -1,0 +1,29 @@
+# Vulkan Loader Notes
+
+## What I was trying to do
+Understand how Vulkan loads ICDs and layers.
+
+## What I started with
+- Vulkan loader GitHub repo
+- ICD JSON files
+- validation layers
+
+## What each part does
+- Loader: picks the right driver
+- ICD: actual GPU driver
+- Layers: debugging and validation
+
+## What happened
+- Loader logic is complex but logical.
+- ICD selection depends on JSON metadata.
+
+## What confused me
+- Layer ordering rules.
+- How implicit layers get loaded.
+
+## What I want to try next
+- Inspect ICD JSON files.
+- Try enabling validation layers.
+
+## Random thoughts
+The loader is the “traffic cop” of Vulkan.
